@@ -8,7 +8,9 @@ class Main extends Component {
     super()
     this.state = {  userInput: "",
                     currWord: [],
-                    currDisplay: [] }
+                    currDisplay: [],
+                    invalidInput: false,
+                    wrongCount: 0 }
   }
 
   async componentDidMount() {
@@ -27,22 +29,33 @@ class Main extends Component {
   }
 
   handleUserInput = (e) => {
+    let userInput = e.target.value.toLowerCase();
+    let invalidInput = Util.isInvalidInput(userInput);
     this.setState({
-      userInput: e.target.value
+      userInput, invalidInput
     })
   }
 
   handleSubmit = (e) => {
-
+    e.preventDefault();
+    let { userInput, currWord, currDisplay, wrongCount } = this.state;
+    let guess = Util.processGuess(userInput, currWord, currDisplay);
+    this.setState({
+      currDisplay: guess.newDisplay,
+      wrongCount: guess.isWrongGuess ? wrongCount + 1 : wrongCount,
+      userInput: ""
+    })
   }
 
   render() {
-    let { userInput, currDisplay } = this.state;
+    let { userInput, currDisplay, invalidInput } = this.state;
     return (
       <>
         <div className="form-wrapper">
-        <form>
-          <input name="user-input" type="text" value={this.state.userInput} onChange={this.handleUserInput} />
+        <form onSubmit={this.handleSubmit}>
+          <input name="user-input" type="text" value={userInput} onChange={this.handleUserInput} />
+          <div className="invalid-display">{invalidInput && userInput !== "" ? "*please input one letter" : ""}</div>
+          <button type="submit">Guess</button>
         </form>
         </div>
         <div className="display-word-wrapper">
