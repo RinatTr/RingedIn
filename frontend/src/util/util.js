@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //API calls
-export const getAllWords = axios.get(`http://app.linkedin-reach.io/words`)
+export const getAllWords = () => { return axios.get(`/words`) }
 
 //Util functions
 export const getRandomWord = (words) => {
