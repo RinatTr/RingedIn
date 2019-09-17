@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import * as Util from '../util/util.js';
+import Word from './Word.js';
+import '../css/Main.css';
 
 class Main extends Component {
   constructor() {
@@ -29,17 +31,24 @@ class Main extends Component {
       userInput: e.target.value
     })
   }
-  
+
   handleSubmit = (e) => {
 
   }
 
   render() {
-    console.log(this.state.currDisplay, this.state.currWord)
+    let { userInput, currDisplay } = this.state;
     return (
-      <form>
-        <input name="user-input" type="text" value={this.state.userInput} onChange={this.handleUserInput} />
-      </form>
+      <>
+        <div className="form-wrapper">
+        <form>
+          <input name="user-input" type="text" value={this.state.userInput} onChange={this.handleUserInput} />
+        </form>
+        </div>
+        <div className="display-word-wrapper">
+          {currDisplay ? <Word currDisplay={currDisplay} /> : ""}
+        </div>
+      </>
     )
   }
 }

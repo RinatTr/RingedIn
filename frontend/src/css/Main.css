@@ -1,0 +1,14 @@
+div.display-word-wrapper {
+   display: flex;
+   justify-content: center;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  padding-inline-start: 0px;
+}
+
+ul li {
+  padding: 5px;
+}
