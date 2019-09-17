@@ -44,7 +44,7 @@ Timeframe: 09/16 - 09/23
 7. keyboard event listener (optional)
 
 #### Day 6 (Sat)
-8. Refine design
+8. Refine design, make responsive
 
 #### Day 7 (Sun)
 9. Final touches
