@@ -1,19 +1,33 @@
+div.display-guesses-wrapper {
+  margin: 10px;
+}
+
 div.display-word-wrapper {
    display: flex;
    justify-content: center;
+   margin: 20px;
+}
+
+div.wrong-guesses-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }
 
 ul {
   list-style: none;
   display: flex;
   padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
 }
 
 ul li {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 ul li span#underscore {
