@@ -79,7 +79,7 @@ class Main extends Component {
           </div>
         </div>
         <div className="rings-wrapper">
-          <Rings />
+          <Rings count={wrongGuesses.length}/>
         </div>
       </>
     )

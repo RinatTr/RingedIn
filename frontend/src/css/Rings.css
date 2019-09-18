@@ -1,7 +1,6 @@
 div.ring {
   border-radius: 50%;
-  padding: 10px;
-  border: 3px whitesmoke solid;
+  border: 5px whitesmoke solid;
   width: 80%;
   height: 80%;
   display: flex;
@@ -18,25 +17,24 @@ div.ring {
  #bc0000
  GREY: #d6d4d4*/
 
-div.ring#first{
+div.ring[id="1"]{
   background-color: #264653;
-  width: 100%;
-  height: 100%;
 }
-div.ring#second{
+div.ring[id="2"]{
   background-color: #2A9D8F;
 }
-div.ring#third{
+div.ring[id="3"]{
   background-color: #E9C46A;
 }
-div.ring#fourth{
+div.ring[id="4"]{
   background-color: #F4A261;
 }
-div.ring#fifth{
+div.ring[id="5"]{
   background-color: #E76F51;
 }
-div.ring#sixth{
+div.ring[id="6"]{
   background-color: #BC0000;
-  width: 70%;
-  height: 70%;
+}
+div.ring#grey {
+  background-color: lightgrey;
 }
