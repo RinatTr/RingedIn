@@ -39,3 +39,17 @@ div.ring[id="6"]{
 div.ring#grey {
   background-color: #e5e5e5;
 }
+
+div.result-display {
+  width: 80%;
+  height: 80%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  border-radius: 50%;
+  filter: opacity(80%)
+}

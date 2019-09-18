@@ -93,12 +93,10 @@ class Main extends Component {
           <div className="wrong-guesses-container">
             Wrong Guesses: { <WrongGuesses wrongGuesses={wrongGuesses} /> }
           </div>
-          <div className="result-display">
-            {result.isEnd ? (result.isWin ? "You WON!" : "You LOST!") : ""}
-          </div>
         </div>
         <div className="rings-wrapper">
-          <Rings count={wrongGuesses.length}/>
+          <Rings  count={wrongGuesses.length}
+                  result={result} />
         </div>
         <div className="game-button-wrapper">
           {result.isEnd ? <button onClick={this.handleNewGame}>New Game</button> : ""}
