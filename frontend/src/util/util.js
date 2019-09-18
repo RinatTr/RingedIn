@@ -30,3 +30,10 @@ export const processGuess = (userInput, currWord, currDisplay) => {
   isWrongGuess = (nullCount === currWord.length)
   return { isWrongGuess, newDisplay }
 }
+
+export const processEnd = (wrongGuesses, currWord, currDisplay) => {
+  let result = { isWin: currWord.join('') === currDisplay.join('') && currWord.length,
+                 isLose: wrongGuesses.length === 6 };
+  result.isEnd = result.isWin || result.isLose;
+  return result;
+}

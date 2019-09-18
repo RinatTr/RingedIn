@@ -46,14 +46,14 @@ class Main extends Component {
         userInput: "",
         currDisplay: guess.newDisplay,
         wrongGuesses: guess.isWrongGuess ? [ ...wrongGuesses, userInput] : [...wrongGuesses]
-      })  
+      })
     }
   }
 
   render() {
     let { userInput, currDisplay, currWord, invalidInput, wrongGuesses } = this.state;
     let result = Util.processEnd(wrongGuesses, currWord, currDisplay);
-    console.log(this.state.currWord, result);
+    console.log(this.state.currWord);
     return (
       <>
         <div className="form-wrapper">
