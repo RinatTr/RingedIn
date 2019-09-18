@@ -20,6 +20,7 @@ export const processGuess = (userInput, currWord, currDisplay) => {
       if (letter === userInput) {
         return letter;
       } else if (currDisplay[i]) {
+        nullCount++;
         return currDisplay[i];
       } else {
         nullCount++;

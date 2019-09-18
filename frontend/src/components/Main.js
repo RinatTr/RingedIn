@@ -48,7 +48,8 @@ class Main extends Component {
   }
 
   render() {
-    let { userInput, currDisplay, invalidInput } = this.state;
+    let { userInput, currDisplay, invalidInput, wrongCount } = this.state;
+    console.log(wrongCount);
     return (
       <>
         <div className="form-wrapper">
@@ -60,6 +61,9 @@ class Main extends Component {
         </div>
         <div className="display-word-wrapper">
           {currDisplay ? <Word currDisplay={currDisplay} /> : ""}
+        </div>
+        <div className="display-guesses-wrapper">
+        Guesses Left: {6 - wrongCount}
         </div>
       </>
     )
