@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as Util from '../util/util.js';
 import Word from './Word.js';
 import WrongGuesses from './WrongGuesses.js';
+import Rings from './Rings.js';
 import '../css/Main.css';
 
 class Main extends Component {
@@ -76,6 +77,9 @@ class Main extends Component {
           <div className="result-display">
             {result.isEnd ? (result.isWin ? "You WON!" : "You LOST!") : ""}
           </div>
+        </div>
+        <div className="rings-wrapper">
+          <Rings />
         </div>
       </>
     )
