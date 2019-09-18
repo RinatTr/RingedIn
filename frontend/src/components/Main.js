@@ -13,6 +13,7 @@ class Main extends Component {
                     currDisplay: [],
                     invalidInput: false,
                     wrongGuesses: [] }
+    this.handleNewGame = this.handleNewGame.bind(this);
   }
 
   async componentDidMount() {
@@ -51,6 +52,24 @@ class Main extends Component {
     }
   }
 
+  async handleNewGame() {
+    let currDisplay, randomWord;
+    try {
+      let getWords = await Util.getAllWords();
+      randomWord = Util.getRandomWord(getWords.data.split('\n'))
+    } catch (e) {
+      console.log("error getting words from API", e)
+    }
+    currDisplay = new Array(randomWord.length).fill(null);
+    this.setState({
+      currWord: randomWord.split(''),
+      userInput: "",
+      currDisplay,
+      invalidInput: false,
+      wrongGuesses: []
+    })
+  }
+
   render() {
     let { userInput, currDisplay, currWord, invalidInput, wrongGuesses } = this.state;
     let result = Util.processEnd(wrongGuesses, currWord, currDisplay);
@@ -80,6 +99,9 @@ class Main extends Component {
         </div>
         <div className="rings-wrapper">
           <Rings count={wrongGuesses.length}/>
+        </div>
+        <div className="game-button-wrapper">
+          {result.isEnd ? <button onClick={this.handleNewGame}>New Game</button> : ""}
         </div>
       </>
     )
