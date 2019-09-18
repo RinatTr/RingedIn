@@ -49,8 +49,9 @@ class Main extends Component {
   }
 
   render() {
-    let { userInput, currDisplay, invalidInput, wrongGuesses } = this.state;
-    console.log(wrongGuesses, this.state.currWord);
+    let { userInput, currDisplay, currWord, invalidInput, wrongGuesses } = this.state;
+    let result = Util.processEnd(wrongGuesses, currWord, currDisplay);
+    console.log(this.state.currWord, result);
     return (
       <>
         <div className="form-wrapper">
@@ -68,7 +69,10 @@ class Main extends Component {
             Guesses Left: {6 - wrongGuesses.length}
           </div>
           <div className="wrong-guesses-container">
-            Wrong Guesses:  { <WrongGuesses wrongGuesses={wrongGuesses} /> }
+            Wrong Guesses: { <WrongGuesses wrongGuesses={wrongGuesses} /> }
+          </div>
+          <div className="result-display">
+            {result.isEnd ? (result.isWin ? "You WON!" : "You LOST!") : ""}
           </div>
         </div>
       </>
