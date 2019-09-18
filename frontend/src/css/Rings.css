@@ -1,6 +1,6 @@
 div.ring {
   border-radius: 50%;
-  border: 5px whitesmoke solid;
+  border: 3px whitesmoke solid;
   width: 80%;
   height: 80%;
   display: flex;
@@ -16,7 +16,7 @@ div.ring {
  #F4A261
  #E76F51
  #bc0000
- GREY: #d6d4d4*/
+ GREY: #e5e5e5*/
 
 div.ring[id="1"]{
   background-color: #264653;
@@ -37,5 +37,5 @@ div.ring[id="6"]{
   background-color: #BC0000;
 }
 div.ring#grey {
-  background-color: lightgrey;
+  background-color: #e5e5e5;
 }
