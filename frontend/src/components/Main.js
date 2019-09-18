@@ -39,13 +39,15 @@ class Main extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let { userInput, currWord, currDisplay, wrongGuesses } = this.state;
-    let guess = Util.processGuess(userInput, currWord, currDisplay);
-    this.setState({
-      userInput: "",
-      currDisplay: guess.newDisplay,
-      wrongGuesses: guess.isWrongGuess ? [ ...wrongGuesses, userInput] : [...wrongGuesses]
-    })
+    let { userInput, currWord, currDisplay, wrongGuesses, invalidInput } = this.state;
+    if (!invalidInput) {
+      let guess = Util.processGuess(userInput, currWord, currDisplay);
+      this.setState({
+        userInput: "",
+        currDisplay: guess.newDisplay,
+        wrongGuesses: guess.isWrongGuess ? [ ...wrongGuesses, userInput] : [...wrongGuesses]
+      })  
+    }
   }
 
   render() {
