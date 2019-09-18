@@ -20,9 +20,3 @@ const Rings = ({count}) => {
 };
 
 export default Rings;
-
-// caseToColor
-// takes in ring id and number of wrong Guesses
-// if not within wrong guesses, output original ring id string
-// if within wrong guesses, output id to be "grey"
-// style={{"backgroundColor":"white"}}
