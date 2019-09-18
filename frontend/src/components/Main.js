@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as Util from '../util/util.js';
 import Word from './Word.js';
+import WrongGuesses from './WrongGuesses.js';
 import '../css/Main.css';
 
 class Main extends Component {
@@ -10,7 +11,7 @@ class Main extends Component {
                     currWord: [],
                     currDisplay: [],
                     invalidInput: false,
-                    wrongCount: 0 }
+                    wrongGuesses: [] }
   }
 
   async componentDidMount() {
@@ -38,32 +39,37 @@ class Main extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let { userInput, currWord, currDisplay, wrongCount } = this.state;
+    let { userInput, currWord, currDisplay, wrongGuesses } = this.state;
     let guess = Util.processGuess(userInput, currWord, currDisplay);
     this.setState({
+      userInput: "",
       currDisplay: guess.newDisplay,
-      wrongCount: guess.isWrongGuess ? wrongCount + 1 : wrongCount,
-      userInput: ""
+      wrongGuesses: guess.isWrongGuess ? [ ...wrongGuesses, userInput] : [...wrongGuesses]
     })
   }
 
   render() {
-    let { userInput, currDisplay, invalidInput, wrongCount } = this.state;
-    console.log(wrongCount);
+    let { userInput, currDisplay, invalidInput, wrongGuesses } = this.state;
+    console.log(wrongGuesses, this.state.currWord);
     return (
       <>
         <div className="form-wrapper">
-        <form onSubmit={this.handleSubmit}>
-          <input name="user-input" type="text" value={userInput} onChange={this.handleUserInput} />
-          <div className="invalid-display">{invalidInput && userInput !== "" ? "*please input one letter" : ""}</div>
-          <button type="submit">Guess</button>
-        </form>
+          <form onSubmit={this.handleSubmit}>
+            <input name="user-input" type="text" value={userInput} onChange={this.handleUserInput} />
+            <div className="invalid-display">{invalidInput && userInput !== "" ? "*please input one letter" : ""}</div>
+            <button type="submit">Guess</button>
+          </form>
         </div>
         <div className="display-word-wrapper">
           {currDisplay ? <Word currDisplay={currDisplay} /> : ""}
         </div>
         <div className="display-guesses-wrapper">
-        Guesses Left: {6 - wrongCount}
+          <div className="guesses-left-container">
+            Guesses Left: {6 - wrongGuesses.length}
+          </div>
+          <div className="wrong-guesses-container">
+            Wrong Guesses:  { <WrongGuesses wrongGuesses={wrongGuesses} /> }
+          </div>
         </div>
       </>
     )
