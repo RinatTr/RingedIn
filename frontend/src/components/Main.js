@@ -76,6 +76,7 @@ class Main extends Component {
       <>
         <div className="form-wrapper">
           <form onSubmit={this.handleSubmit}>
+            <label>Your Guess:</label>
             <input name="user-input" type="text" value={userInput} onChange={this.handleUserInput} />
             <div className="invalid-display">{invalidInput && userInput !== "" ? "*please input one letter" : ""}</div>
             <button type="submit">Guess</button>

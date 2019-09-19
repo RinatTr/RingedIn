@@ -1,3 +1,11 @@
+form {
+  display: flex;
+}
+
+form > * {
+  margin-right: 5px;
+}
+
 div.display-guesses-wrapper {
   margin: 10px;
 }
