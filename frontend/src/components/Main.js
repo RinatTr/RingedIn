@@ -4,6 +4,7 @@ import Word from './Word.js';
 import WrongGuesses from './WrongGuesses.js';
 import Rings from './Rings.js';
 import Blop from '../assets/blop.wav';
+import Chime from '../assets/chime.mp3';
 import '../css/Main.css';
 
 class Main extends Component {
@@ -17,6 +18,7 @@ class Main extends Component {
                     result: {} }
     this.handleNewGame = this.handleNewGame.bind(this);
     this.blop = new Audio(Blop);
+    this.chime = new Audio(Chime);
   }
 
   async componentDidMount() {
@@ -40,7 +42,7 @@ class Main extends Component {
     let { userInput, currWord, currDisplay, wrongGuesses, invalidInput, result } = this.state;
     if (!invalidInput && !result.isEnd) {
       let guess = Util.processGuess(userInput, currWord, currDisplay);
-      if (guess.isWrongGuess) this.blop.play();
+      (guess.isWrongGuess ? this.blop : this.chime).play();
       this.setState({
         userInput: "",
         currDisplay: guess.newDisplay,
