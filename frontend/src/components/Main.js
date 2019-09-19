@@ -62,7 +62,6 @@ class Main extends Component {
   render() {
     let { userInput, currDisplay, currWord, invalidInput, wrongGuesses } = this.state;
     let result = Util.processEnd(wrongGuesses, currWord, currDisplay);
-    console.log(this.state.currWord);
     return (
       <>
         <div className="form-wrapper">
