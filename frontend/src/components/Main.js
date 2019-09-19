@@ -13,7 +13,8 @@ class Main extends Component {
                     currWord: [],
                     currDisplay: [],
                     invalidInput: false,
-                    wrongGuesses: [] }
+                    wrongGuesses: [],
+                    result: {} }
     this.handleNewGame = this.handleNewGame.bind(this);
     this.blop = new Audio(Blop);
   }
@@ -36,16 +37,23 @@ class Main extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let { userInput, currWord, currDisplay, wrongGuesses, invalidInput } = this.state;
-    if (!invalidInput) {
+    let { userInput, currWord, currDisplay, wrongGuesses, invalidInput, result } = this.state;
+    if (!invalidInput && !result.isEnd) {
       let guess = Util.processGuess(userInput, currWord, currDisplay);
       if (guess.isWrongGuess) this.blop.play();
       this.setState({
         userInput: "",
         currDisplay: guess.newDisplay,
         wrongGuesses: guess.isWrongGuess ? [ ...wrongGuesses, userInput] : [...wrongGuesses]
-      })
+      }, this.handleEnd )
     }
+  }
+
+  handleEnd = () => {
+    let { currWord, currDisplay, wrongGuesses } = this.state;
+    let result = Util.processEnd(wrongGuesses, currWord, currDisplay);
+    this.setState({ result,
+                    currDisplay: result.isEnd ? currWord : currDisplay });
   }
 
   async handleNewGame() {
@@ -55,13 +63,13 @@ class Main extends Component {
       userInput: "",
       currDisplay,
       invalidInput: false,
-      wrongGuesses: []
+      wrongGuesses: [],
+      result: {}
     })
   }
 
   render() {
-    let { userInput, currDisplay, currWord, invalidInput, wrongGuesses } = this.state;
-    let result = Util.processEnd(wrongGuesses, currWord, currDisplay);
+    let { userInput, currDisplay, invalidInput, wrongGuesses, result } = this.state;
     return (
       <>
         <div className="form-wrapper">
@@ -72,7 +80,8 @@ class Main extends Component {
           </form>
         </div>
         <div className="display-word-wrapper">
-          {currDisplay ? <Word currDisplay={currDisplay} /> : ""}
+          {currDisplay ? <Word  currDisplay={currDisplay}
+                                result={result} /> : ""}
         </div>
         <div className="display-guesses-wrapper">
           <div className="guesses-left-container">
