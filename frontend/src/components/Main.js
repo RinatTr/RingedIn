@@ -19,14 +19,7 @@ class Main extends Component {
   }
 
   async componentDidMount() {
-    let currDisplay, randomWord;
-    try {
-      let getWords = await Util.getAllWords();
-      randomWord = Util.getRandomWord(getWords.data.split('\n'))
-    } catch (e) {
-      console.log("error getting words from API", e)
-    }
-    currDisplay = new Array(randomWord.length).fill(null);
+    let { currDisplay, randomWord } = await Util.initGame();
     this.setState({
       currWord: randomWord.split(''),
       currDisplay
@@ -56,14 +49,7 @@ class Main extends Component {
   }
 
   async handleNewGame() {
-    let currDisplay, randomWord;
-    try {
-      let getWords = await Util.getAllWords();
-      randomWord = Util.getRandomWord(getWords.data.split('\n'))
-    } catch (e) {
-      console.log("error getting words from API", e)
-    }
-    currDisplay = new Array(randomWord.length).fill(null);
+    let { currDisplay, randomWord } = await Util.initGame();
     this.setState({
       currWord: randomWord.split(''),
       userInput: "",

@@ -37,3 +37,15 @@ export const processEnd = (wrongGuesses, currWord, currDisplay) => {
   result.isEnd = result.isWin || result.isLose;
   return result;
 }
+
+export async function initGame() {
+  let currDisplay, randomWord;
+  try {
+    let getWords = await getAllWords();
+    randomWord = getRandomWord(getWords.data.split('\n'))
+  } catch (e) {
+    console.log("error getting words from API", e)
+  }
+  currDisplay = new Array(randomWord.length).fill(null);
+  return { currDisplay, randomWord }
+}
