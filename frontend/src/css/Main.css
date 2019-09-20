@@ -1,3 +1,7 @@
+div.slider-wrapper {
+  display: flex;
+}
+
 div.form-wrapper {
   display: flex;
   justify-content: space-between;

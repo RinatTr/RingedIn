@@ -3,6 +3,7 @@ import * as Util from '../util/util.js';
 import Word from './Word.js';
 import WrongGuesses from './WrongGuesses.js';
 import Rings from './Rings.js';
+import Slider from './Slider.js';
 import Blop from '../assets/blop.wav';
 import Chime from '../assets/chime.mp3';
 import '../css/Main.css';
@@ -11,6 +12,7 @@ class Main extends Component {
   constructor() {
     super()
     this.state = {  userInput: "",
+                    difficulty: 1,
                     currWord: [],
                     currDisplay: [],
                     invalidInput: false,
@@ -22,7 +24,7 @@ class Main extends Component {
   }
 
   async componentDidMount() {
-    let { currDisplay, randomWord } = await Util.initGame();
+    let { currDisplay, randomWord } = await Util.initGame(this.state.difficulty);
     this.setState({
       currWord: randomWord.split(''),
       currDisplay
@@ -34,6 +36,12 @@ class Main extends Component {
     let invalidInput = Util.isInvalidInput(userInput);
     this.setState({
       userInput, invalidInput
+    })
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
     })
   }
 
@@ -59,7 +67,7 @@ class Main extends Component {
   }
 
   async handleNewGame() {
-    let { currDisplay, randomWord } = await Util.initGame();
+    let { currDisplay, randomWord } = await Util.initGame(this.state.difficulty);
     this.setState({
       currWord: randomWord.split(''),
       userInput: "",
@@ -71,7 +79,7 @@ class Main extends Component {
   }
 
   render() {
-    let { userInput, currDisplay, invalidInput, wrongGuesses, result } = this.state;
+    let { userInput, currDisplay, invalidInput, wrongGuesses, result, difficulty } = this.state;
     return (
       <>
         <div className="form-wrapper">
@@ -98,9 +106,18 @@ class Main extends Component {
           <Rings  count={wrongGuesses.length}
                   result={result} />
         </div>
-        <div className="game-button-wrapper">
-          {result.isEnd ? <button onClick={this.handleNewGame}>New Game</button> : ""}
-        </div>
+        { result.isEnd ?
+          <>
+            <p>Try again? .. choose difficulty:</p>
+            <div className="slider-wrapper">
+              <span>Easy</span>
+              <Slider id="difficulty" value={difficulty} min="1" max="10" handleChange={this.handleChange}/>
+              <span>Hard</span>
+            </div>
+            <div className="game-button-wrapper">
+              <button onClick={this.handleNewGame}>New Game</button>
+            </div>
+          </> : "" }
       </>
     )
   }

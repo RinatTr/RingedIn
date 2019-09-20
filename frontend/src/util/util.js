@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //API calls
-export const getAllWords = () => { return axios.get(`/words`) }
+export const getAllWords = (int) => { return axios.get(`/words?difficulty=${int}`) }
 
 //Util functions
 export const getRandomWord = (words) => {
@@ -38,10 +38,10 @@ export const processEnd = (wrongGuesses, currWord, currDisplay) => {
   return result;
 }
 
-export async function initGame() {
+export async function initGame(int) {
   let currDisplay, randomWord;
   try {
-    let getWords = await getAllWords();
+    let getWords = await getAllWords(int);
     randomWord = getRandomWord(getWords.data.split('\n'))
   } catch (e) {
     console.log("error getting words from API", e)
