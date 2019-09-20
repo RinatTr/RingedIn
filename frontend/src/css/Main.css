@@ -1,6 +1,7 @@
 div.form-wrapper {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 form {
@@ -13,6 +14,9 @@ form > * {
 
 div.display-guesses-wrapper {
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 div.display-word-wrapper {
@@ -58,5 +62,10 @@ div.rings-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+div.game-button-wrapper {
+  display: flex;
   justify-content: center;
 }
