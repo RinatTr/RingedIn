@@ -7,4 +7,9 @@
 
 .App-header {
   color: black;
+  width: 45vw;
+}
+
+.App-main {
+  width: 45vw;
 }

@@ -79,8 +79,8 @@ class Main extends Component {
             <label>Your Guess:</label>
             <input name="user-input" type="text" value={userInput} onChange={this.handleUserInput} />
             <button type="submit">Guess</button>
-            <div className="invalid-display">{invalidInput && userInput !== "" ? "*please input one letter" : ""}</div>
           </form>
+          <div className="invalid-display">{invalidInput && userInput !== "" ? "*please input one letter" : ""}</div>
         </div>
         <div className="display-word-wrapper">
           {currDisplay ? <Word  currDisplay={currDisplay}
