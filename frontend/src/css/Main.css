@@ -22,6 +22,11 @@ div.wrong-guesses-container {
   margin-top: 10px;
 }
 
+div.invalid-display {
+  color: #E76F51;
+  font-size: 14px;
+}
+
 ul {
   list-style: none;
   display: flex;
