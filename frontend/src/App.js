@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 import Main from './components/Main.js';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>RingedIn</h1>
-        <h4>Guess the next letter in the word and keep your rings colorful!</h4>
+        <p>Guess the next letter in the word and keep your rings colorful!</p>
       </header>
       <section className="App-main">
         <Main />
