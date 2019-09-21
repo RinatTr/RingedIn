@@ -115,9 +115,9 @@ class Main extends Component {
             <>
               <p>Try again? .. choose difficulty:</p>
               <div className="slider-wrapper">
-                <span>Easy</span>
+                <span id="easy">Easy</span>
                 <Slider id="difficulty" value={difficulty} min="1" max="10" handleChange={this.handleChange}/>
-                <span>Hard</span>
+                <span id="hard">Hard</span>
               </div>
               <div className="game-button-wrapper">
                 <button onClick={this.handleNewGame}>NEW GAME</button>
