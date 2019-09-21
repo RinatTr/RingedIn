@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as Util from '../util/util.js';
+import { guessToColor } from '../util/display.js';
 import Word from './Word.js';
 import WrongGuesses from './WrongGuesses.js';
 import Rings from './Rings.js';
@@ -7,6 +8,7 @@ import Slider from './Slider.js';
 import Blop from '../assets/blop.wav';
 import Chime from '../assets/chime.mp3';
 import '../css/Main.css';
+import '../css/Count.css';
 
 class Main extends Component {
   constructor() {
@@ -105,7 +107,7 @@ class Main extends Component {
           <div className="invalid-display">{invalidInput && userInput !== "" ? "*please input one letter" : ""}</div>
           <div className="display-guesses-wrapper">
             <div className="guesses-left-container">
-              Guesses Left: {6 - wrongGuesses.length}
+              Guesses Left: <span className="count" id={guessToColor(wrongGuesses.length)}>{6 - wrongGuesses.length}</span>
             </div>
             <div className="wrong-guesses-container">
               Wrong Guesses: { <WrongGuesses wrongGuesses={wrongGuesses} /> }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { caseToColor } from '../util/display.js';
 const WrongGuesses = ( { wrongGuesses } ) => {
   return (
     <ul>

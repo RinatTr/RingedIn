@@ -9,3 +9,7 @@ export const resultToColor = (result) => {
     return {};
   }
 }
+
+export const guessToColor = (count) => {
+  return count + 1;
+}
