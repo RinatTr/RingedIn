@@ -54,6 +54,7 @@ ul li {
   justify-content: flex-end;
   padding-left: 3px;
   padding-right: 3px;
+  text-align: center;
 }
 
 ul li span#underscore {
