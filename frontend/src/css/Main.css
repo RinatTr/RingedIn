@@ -33,7 +33,7 @@ form > * {
 
 form input {
   width: 20px;
-  font-size: 18px;
+  font-size: 20px;
   border: none;
   border-bottom: 2px solid black;
   border-radius: 5px;
@@ -43,9 +43,10 @@ form input {
 div.display-word-wrapper {
    display: flex;
    justify-content: center;
-   margin: 20px;
+   margin: 30px;
+   margin-bottom: -5px;
    height: 20px;
-   font-size: 24px;
+   font-size: 28px;
    font-weight: bold;
 }
 
