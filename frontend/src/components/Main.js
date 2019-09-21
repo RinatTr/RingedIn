@@ -82,42 +82,48 @@ class Main extends Component {
     let { userInput, currDisplay, invalidInput, wrongGuesses, result, difficulty } = this.state;
     return (
       <>
-        <div className="form-wrapper">
-          <form onSubmit={this.handleSubmit}>
-            <label>Your Guess:</label>
-            <input name="user-input" type="text" value={userInput} onChange={this.handleUserInput} />
-            <button type="submit">Guess</button>
-          </form>
+        <div className="left-col">
+        </div>
+        <div className="center-col">
+          <div className="form-wrapper">
+            <form onSubmit={this.handleSubmit}>
+              <label>Your Guess:</label>
+              <input name="user-input" type="text" value={userInput} onChange={this.handleUserInput} />
+              <button type="submit">GUESS</button>
+            </form>
+          </div>
+          <div className="display-word-wrapper">
+            {currDisplay ? <Word  currDisplay={currDisplay}
+                                  result={result} /> : ""}
+          </div>
+          <div className="rings-wrapper">
+            <Rings  count={wrongGuesses.length}
+                    result={result} />
+          </div>
+        </div>
+        <div className="right-col">
           <div className="invalid-display">{invalidInput && userInput !== "" ? "*please input one letter" : ""}</div>
-        </div>
-        <div className="display-word-wrapper">
-          {currDisplay ? <Word  currDisplay={currDisplay}
-                                result={result} /> : ""}
-        </div>
-        <div className="display-guesses-wrapper">
-          <div className="guesses-left-container">
-            Guesses Left: {6 - wrongGuesses.length}
-          </div>
-          <div className="wrong-guesses-container">
-            Wrong Guesses: { <WrongGuesses wrongGuesses={wrongGuesses} /> }
-          </div>
-        </div>
-        <div className="rings-wrapper">
-          <Rings  count={wrongGuesses.length}
-                  result={result} />
-        </div>
-        { result.isEnd ?
-          <>
-            <p>Try again? .. choose difficulty:</p>
-            <div className="slider-wrapper">
-              <span>Easy</span>
-              <Slider id="difficulty" value={difficulty} min="1" max="10" handleChange={this.handleChange}/>
-              <span>Hard</span>
+          <div className="display-guesses-wrapper">
+            <div className="guesses-left-container">
+              Guesses Left: {6 - wrongGuesses.length}
             </div>
-            <div className="game-button-wrapper">
-              <button onClick={this.handleNewGame}>New Game</button>
+            <div className="wrong-guesses-container">
+              Wrong Guesses: { <WrongGuesses wrongGuesses={wrongGuesses} /> }
             </div>
-          </> : "" }
+          </div>
+          { result.isEnd ?
+            <>
+              <p>Try again? .. choose difficulty:</p>
+              <div className="slider-wrapper">
+                <span>Easy</span>
+                <Slider id="difficulty" value={difficulty} min="1" max="10" handleChange={this.handleChange}/>
+                <span>Hard</span>
+              </div>
+              <div className="game-button-wrapper">
+                <button onClick={this.handleNewGame}>NEW GAME</button>
+              </div>
+            </> : "" }
+        </div>
       </>
     )
   }

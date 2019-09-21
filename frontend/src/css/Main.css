@@ -1,5 +1,18 @@
+div.center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 div.slider-wrapper {
   display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+div.slider-wrapper > * {
+  margin-right: 10px;
 }
 
 div.form-wrapper {
@@ -11,6 +24,7 @@ div.form-wrapper {
 
 form {
   display: flex;
+  font-size: 18px;
 }
 
 form > * {
@@ -19,10 +33,12 @@ form > * {
 
 form input {
   width: 20px;
+  font-size: 18px;
 }
 
 div.display-word-wrapper {
    display: flex;
+   justify-content: center;
    margin: 20px;
    height: 20px;
    font-size: 24px;
@@ -30,20 +46,22 @@ div.display-word-wrapper {
 }
 
 div.display-guesses-wrapper {
-  margin: 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 18px;
+
 }
 
 div.wrong-guesses-container {
   display: flex;
-  justify-content: center;
-  margin-left: 10px;
+  justify-content: flex-start;
 }
 
 div.invalid-display {
   color: #E76F51;
   font-size: 14px;
+  height: 18px;
 }
 
 ul {
@@ -78,5 +96,5 @@ div.rings-wrapper {
 
 div.game-button-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
