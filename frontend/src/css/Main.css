@@ -98,3 +98,25 @@ div.game-button-wrapper {
   display: flex;
   justify-content: flex-start;
 }
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #264653;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  color: whitesmoke;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #2A9D8F;
+  cursor: pointer;
+}
+button:active {
+  background: whitesmoke;
+}
