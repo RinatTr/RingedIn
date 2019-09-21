@@ -1,3 +1,7 @@
+span.count {
+  font-size: 28px;
+  font-weight: 400;
+}
 span.count[id="1"]{
   color: #264653;
 }
