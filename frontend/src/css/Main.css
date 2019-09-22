@@ -90,9 +90,12 @@ div.rings-wrapper {
 }
 
 div.game-button-wrapper {
-  display: flex;
-  justify-content: flex-start;
   margin-top: 20px;
+}
+
+div.game-button-wrapper div.invalid-display {
+  margin-top: 5px;
+  width: 85%;
 }
 
 button {
