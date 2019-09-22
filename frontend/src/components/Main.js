@@ -19,9 +19,11 @@ class Main extends Component {
                     currWord: [],
                     currDisplay: [],
                     invalidInput: false,
+                    invalidGame: false,
                     wrongGuesses: [],
                     result: {} }
     this.handleNewGame = this.handleNewGame.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.blop = new Audio(Blop);
     this.chime = new Audio(Chime);
   }
@@ -73,18 +75,23 @@ class Main extends Component {
   async handleNewGame() {
     let { difficulty, length } = this.state;
     let { currDisplay, randomWord } = await Util.initGame(difficulty, length);
-    this.setState({
-      currWord: randomWord.split(''),
-      userInput: "",
-      currDisplay,
-      invalidInput: false,
-      wrongGuesses: [],
-      result: {}
-    })
+    if (Util.isValidNewGame(randomWord)) {
+      this.setState({
+        currWord: randomWord.split(''),
+        userInput: "",
+        currDisplay,
+        invalidInput: false,
+        invalidGame: false,
+        wrongGuesses: [],
+        result: {}
+      })
+    } else {
+      this.setState({ invalidGame: true})
+    }
   }
 
   render() {
-    let { userInput, currDisplay, invalidInput, wrongGuesses, result, difficulty, length } = this.state;
+    let { userInput, currDisplay, invalidInput, invalidGame, wrongGuesses, result, difficulty, length } = this.state;
     return (
       <>
         <div className="left-col">
@@ -125,6 +132,7 @@ class Main extends Component {
               <Slider id="length" value={length} min="2" max="10" handleChange={this.handleChange} labelL="Short" labelR="Long"/>
               <div className="game-button-wrapper">
                 <button onClick={this.handleNewGame}>NEW GAME</button>
+                <div className="invalid-display">{invalidGame ? "*OOPS.. no words in chosen properties. Try matching difficulty closer to length." : ""}</div>
               </div>
             </> : "" }
         </div>

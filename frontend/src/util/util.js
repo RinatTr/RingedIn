@@ -38,6 +38,11 @@ export const processEnd = (wrongGuesses, currWord, currDisplay) => {
   return result;
 }
 
+export const isValidNewGame = (res) => {
+  //if response came back empty, user encouraged to adjust category
+  return res.length ? true : false;
+}
+
 export async function initGame(diff, len) {
   let currDisplay, randomWord;
   try {
