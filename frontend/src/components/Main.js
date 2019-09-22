@@ -118,8 +118,10 @@ class Main extends Component {
           </div>
           { result.isEnd ?
             <>
-              <p>Try again? .. choose difficulty:</p>
+              <p>Try again?</p>
+              <p>Choose difficulty:</p>
               <Slider id="difficulty" value={difficulty} min="1" max="10" handleChange={this.handleChange} labelL="Easy" labelR="Hard"/>
+              <p>Choose length:</p>
               <Slider id="length" value={length} min="2" max="10" handleChange={this.handleChange} labelL="Short" labelR="Long"/>
               <div className="game-button-wrapper">
                 <button onClick={this.handleNewGame}>NEW GAME</button>
