@@ -14,7 +14,8 @@ class Main extends Component {
   constructor() {
     super()
     this.state = {  userInput: "",
-                    difficulty: 1,
+                    difficulty: 5,
+                    length: 5,
                     currWord: [],
                     currDisplay: [],
                     invalidInput: false,
@@ -81,7 +82,7 @@ class Main extends Component {
   }
 
   render() {
-    let { userInput, currDisplay, invalidInput, wrongGuesses, result, difficulty } = this.state;
+    let { userInput, currDisplay, invalidInput, wrongGuesses, result, difficulty, length } = this.state;
     return (
       <>
         <div className="left-col">
@@ -116,11 +117,8 @@ class Main extends Component {
           { result.isEnd ?
             <>
               <p>Try again? .. choose difficulty:</p>
-              <div className="slider-wrapper">
-                <span id="easy">Easy</span>
-                <Slider id="difficulty" value={difficulty} min="1" max="10" handleChange={this.handleChange}/>
-                <span id="hard">Hard</span>
-              </div>
+              <Slider id="difficulty" value={difficulty} min="1" max="10" handleChange={this.handleChange} labelL="Easy" labelR="Hard"/>
+              <Slider id="length" value={length} min="1" max="10" handleChange={this.handleChange} labelL="Short" labelR="Long" />
               <div className="game-button-wrapper">
                 <button onClick={this.handleNewGame}>NEW GAME</button>
               </div>

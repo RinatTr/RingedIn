@@ -5,23 +5,6 @@ div.center-col {
   align-items: center;
 }
 
-div.slider-wrapper {
-  display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 18px;
-  color: #264653;
-}
-
-div.slider-wrapper > * {
-  margin-right: 10px;
-}
-
-div.slider-wrapper span#hard {
-  color: #BC0000;
-}
-
 div.form-wrapper {
   display: flex;
   align-items: center;
