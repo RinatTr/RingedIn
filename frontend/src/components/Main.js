@@ -38,11 +38,13 @@ class Main extends Component {
   }
 
   handleUserInput = (e) => {
-    let userInput = e.target.value.toLowerCase();
-    let invalidInput = Util.isInvalidInput(userInput);
-    this.setState({
-      userInput, invalidInput
-    })
+    if (!this.state.result.isEnd) {
+      let userInput = e.target.value.toLowerCase();
+      let invalidInput = Util.isInvalidInput(userInput);
+      this.setState({
+        userInput, invalidInput
+      })  
+    }
   }
 
   handleChange = (e) => {
