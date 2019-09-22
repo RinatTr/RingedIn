@@ -27,7 +27,8 @@ class Main extends Component {
   }
 
   async componentDidMount() {
-    let { currDisplay, randomWord } = await Util.initGame(this.state.difficulty);
+    let { difficulty, length } = this.state;
+    let { currDisplay, randomWord } = await Util.initGame(difficulty, length);
     this.setState({
       currWord: randomWord.split(''),
       currDisplay
@@ -70,7 +71,8 @@ class Main extends Component {
   }
 
   async handleNewGame() {
-    let { currDisplay, randomWord } = await Util.initGame(this.state.difficulty);
+    let { difficulty, length } = this.state;
+    let { currDisplay, randomWord } = await Util.initGame(difficulty, length);
     this.setState({
       currWord: randomWord.split(''),
       userInput: "",
@@ -118,7 +120,7 @@ class Main extends Component {
             <>
               <p>Try again? .. choose difficulty:</p>
               <Slider id="difficulty" value={difficulty} min="1" max="10" handleChange={this.handleChange} labelL="Easy" labelR="Hard"/>
-              <Slider id="length" value={length} min="1" max="10" handleChange={this.handleChange} labelL="Short" labelR="Long" />
+              <Slider id="length" value={length} min="2" max="10" handleChange={this.handleChange} labelL="Short" labelR="Long"/>
               <div className="game-button-wrapper">
                 <button onClick={this.handleNewGame}>NEW GAME</button>
               </div>
